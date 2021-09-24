@@ -53,9 +53,19 @@ header a:focus {
 /* BODY SECTION */
 body {
   background-color: #ffff;
+  background-image: url(./images/CSUF_Background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* TYPING CONTAINER */
+
+.displayed-sentence {
+  color: #ffab4c;
+  font-weight: 900;
+  background-color: #084b8aaf;
+  padding: 1em;
+}
 
 .typing-container {
   margin: 0em 5rem;
