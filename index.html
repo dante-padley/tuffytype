@@ -15,15 +15,24 @@
 
     <main>
       <div class="typing-container">
-        <h3 class="displayed-sentence">
+        <!--Want to update this element with words as needed-->
+        <h3 class="displayed-sentence" id="words-display">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt,
           nesciunt.
         </h3>
-        <h2>WPM 20.5</h2>
+        <!--Want to update the span tag with the wpm number-->
+        <h2>WPM <span id="wpm">20.5</span></h2>
         <div class="typing-container-row">
-          <textarea name="" id="" cols="50" rows="100"></textarea>
+          <!--Want to listen to this element for user input and try to track wpm-->
+          <textarea name="" id="typing-area" cols="50" rows="100"></textarea>
         </div>
       </div>
     </main>
+    
+
+    <!--- JAVASCRIPT -->
+
+    <script src="./js/wpm.js"></script>
+
   </body>
 </html>
