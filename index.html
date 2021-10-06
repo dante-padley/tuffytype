@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Tuffy Types</title>
+  </head>
+  <body>
+    <header>
+      <!-- <img src="./images/Tuffy.png" alt="tuffy" id="tuffy-img" /> -->
+      <h1><a href="index.html"> CSUF Tuffy Types </a></h1>
+    </header>
+
+    <main>
+      <div class="typing-container">
+        <!--Want to update this element with words as needed-->
+        <h3 class="displayed-sentence" id="words-display">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt,
+          nesciunt.
+        </h3>
+        <!--Want to update the span tag with the wpm number-->
+        <h2>WPM <span id="wpm">20.5</span></h2>
+        <div class="typing-container-row">
+          <!--Want to listen to this element for user input and try to track wpm-->
+          <textarea name="" id="typing-area" cols="50" rows="100"></textarea>
+        </div>
+      </div>
+    </main>
+    
+
+    <!--- JAVASCRIPT -->
+
+    <script src="./js/wpm.js"></script>
+
+  </body>
+</html>
