@@ -60,10 +60,17 @@ body {
 
 /* TYPING CONTAINER */
 
-.displayed-sentence {
-  color: #ffab4c;
+.timer {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.quote-display {
+  text-align: center;
+  /* color: #ffab4c; */
   font-weight: 900;
-  background-color: #084b8aaf;
+  font-size: 2rem;
+  background-color: #e17000;
   padding: 1em;
 }
 
@@ -76,12 +83,12 @@ body {
   justify-content: center;
 }
 
-.typing-container-row textarea {
+.quote-input {
   font-size: 2rem;
   width: 100%;
   height: 200px;
-  border: 3px solid #e17000;
   padding: 5px;
+  border: 3px solid #00376b;
   font-family: "Libre Franklin", sans-serif;
   font-weight: 900;
   color: #ffff;
@@ -90,4 +97,18 @@ body {
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size: 20% auto;
+  outline: none;
+}
+
+.quote-input:focus {
+  border: 3px solid #e17000;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
 }

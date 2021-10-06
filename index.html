@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="testing.js" defer></script>
     <title>Tuffy Types</title>
   </head>
   <body>
@@ -15,13 +16,17 @@
 
     <main>
       <div class="typing-container">
-        <h3 class="displayed-sentence">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt,
-          nesciunt.
-        </h3>
-        <h2>WPM 20.5</h2>
+        <div class="timer" id="timer">0</div>
+        <h3 class="quote-display" id="quoteDisplay">generating quote....</h3>
         <div class="typing-container-row">
-          <textarea name="" id="" cols="50" rows="100"></textarea>
+          <textarea
+            id="quoteInput"
+            class="quote-input"
+            cols="50"
+            rows="100"
+            placeholder="The clock starts when you start typing."
+            autofocus
+          ></textarea>
         </div>
       </div>
     </main>
