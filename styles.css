@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 
 *,
 *::before,
@@ -11,9 +12,12 @@ body {
   margin: 0;
   /* font-family: "Libre Franklin", sans-serif; */
   font-family: "Lora", serif;
-  color: #00376b;
+  color: #fff;
   background-color: #084b8a;
-  font-size: 1.1rem;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 img {
@@ -25,6 +29,12 @@ img {
 header {
   background-color: #00274c;
   display: flex;
+  background: rgb(0, 39, 76);
+  background: radial-gradient(
+    circle,
+    rgba(0, 39, 76, 1) 53%,
+    rgba(225, 112, 0, 1) 100%
+  );
 }
 
 header h1 {
@@ -49,37 +59,84 @@ header a:focus {
 body {
   background-color: #ffff;
   background-image: url(./images/CSUF_Background.png);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
 }
 
 /* TYPING CONTAINER */
 
-.timer {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
+#main-title {
+  color: #00274c;
+  font-size: 2em;
+  font-weight: bolder;
+  text-shadow: 1px 2px 1px #000000a4;
 }
 
 .quote-display {
   text-align: center;
   /* color: #ffab4c; */
   font-weight: 900;
-  font-size: 1.2rem;
-  background-color: #e17000d7;
-  border-radius: 8px;
+  background-color: #ffffffd7;
+  color: #000000;
+  border-radius: 40px;
   padding: 2rem;
 }
 
 .typing-container {
+  font-size: 1.4rem;
+  font-family: "Ubuntu", sans-serif;
   margin: 0em 5rem;
   margin-top: 1em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* to center it */
+  border-radius: 80px;
+  position: relative;
+}
+
+.stats {
+  text-align: center;
+  flex-direction: column;
+  background-color: #e17000;
+  border-radius: 80px;
+  padding: 0.4em;
 }
 
 #wordspermin {
-  color: #fff;
+  font-weight: bolder;
+  text-shadow: 1px 3px 1px #000000a4;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+.timer {
+  font-weight: bolder;
+  text-shadow: 1px 3px 1px #000000a4;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#word-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#character-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#error-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1000px) {
+  .typing-container {
+    font-size: 1rem;
+  }
 }
