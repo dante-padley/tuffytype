@@ -72,7 +72,6 @@ $(document).ready(function () {
 		
 
 		if (currentIndex === quoteChars.length) {
-			wordspermin();
 			renderNewQuote();
 			return;
 		}
@@ -101,10 +100,17 @@ $(document).ready(function () {
 		}
 	});
 	
+	//Trying to make the word count count every 5 characters
+	// let wordcountEl = $("#word-count");
+	// function wordcounter() {
+	// 	wcount = Math.round(characterCount / 5);
+	// 	wcEl.text("Words Typed: " + wcount.toStrting());
+	// }
 
-	let timerlimit = 1;
+	let SecondsPassed = 0;
 	function wordspermin() {
-		wpm = Math.round(((characterCount / 5) / timerlimit));
+		
+		wpm = Math.round((((characterCount / 5) / SecondsPassed)*60));
 		wordsperminEl.text("WPM: " + wpm.toString());
 	}
 
@@ -115,7 +121,10 @@ $(document).ready(function () {
 	let interval = setInterval(function () {
 		timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
 		if (secondsRemaining > 0) {
-			secondsRemaining--;
+			wordspermin();
+			SecondsPassed++;
+			secondsRemaining--;	
+
 		}
 		else {
 			wordspermin();
