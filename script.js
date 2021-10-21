@@ -51,8 +51,7 @@ $(document).ready(function () {
 				//if (block !== true) {
 					$("span").eq(currentIndex).css("background-color", "#e32957");
 					$("span").eq(currentIndex).addClass("wrong")
-					errorCount++;
-					ecEl.text("Errors: " + errorCount.toString());
+					errorCount++;				
 					currentIndex++;
 					//block = true;
 				//}
@@ -60,12 +59,7 @@ $(document).ready(function () {
 			else {
 				$("span").eq(currentIndex).css("background-color", "#8cff78");
 				characterCount++;
-				ccEl.text("Characters Typed: " + characterCount.toString());
-				if (charTyped === ' ') {
-					wordCount++;
-					wcEl.text("Words Typed: " + wordCount.toString());
-					//block = false;
-				}
+				wordCount = Math.floor(characterCount / 5);
 				currentIndex++;
 			}
 		}
@@ -89,29 +83,24 @@ $(document).ready(function () {
 				}*/
 				currentIndex--;
 				characterCount--;
-				ccEl.text("Characters Typed: " + characterCount.toString());
-				
+
 				if ($("span").eq(currentIndex).hasClass("wrong")) {
-					errorCount--;
-					ecEl.text("Errors: " + errorCount.toString());
+					errorCount--;					
 				}
 				$("span").eq(currentIndex).css("background-color", "#00000000");
 			}
 		}
 	});
-	
-	//Trying to make the word count count every 5 characters
-	// let wordcountEl = $("#word-count");
-	// function wordcounter() {
-	// 	wcount = Math.round(characterCount / 5);
-	// 	wcEl.text("Words Typed: " + wcount.toStrting());
-	// }
 
 	let SecondsPassed = 0;
 	function wordspermin() {
-		
 		wpm = Math.round((((characterCount / 5) / SecondsPassed)*60));
 		wordsperminEl.text("WPM: " + wpm.toString());
+	}
+	function TextCounter(){
+		ccEl.text("Characters Typed: " + characterCount.toString());
+		wcEl.text("Words Typed: " + wordCount.toString());
+		ecEl.text("Errors: " + errorCount.toString());
 	}
 
 	// Timer
@@ -122,6 +111,7 @@ $(document).ready(function () {
 		timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
 		if (secondsRemaining > 0) {
 			wordspermin();
+			TextCounter();
 			SecondsPassed++;
 			secondsRemaining--;	
 
