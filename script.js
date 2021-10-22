@@ -88,6 +88,7 @@ $(document).ready(function () {
 				}*/
 				currentIndex--;
 				characterCount--;
+				wordCount = Math.floor(characterCount / 5);
 
 				if ($("span").eq(currentIndex).hasClass("wrong") && errorCount != 0) {
 					errorCount--;					
@@ -103,10 +104,12 @@ $(document).ready(function () {
 		wcEl.text("Words Typed: " + wordCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
 		wpm = Math.round(((((characterCount / 5) - errorCount) / SecondsPassed)*60));
-		if (wpm < 0) wpm = 0;
+		if (wpm < 0 || isNaN(wpm) || wpm == Infinity) wpm = 0;
+		
 		wordsperminEl.text("WPM: " + wpm.toString());
 	}
 
+	
 	// Timer
 	let secondsRemaining = 60;
 	let timerEl = $("#timer");
@@ -124,6 +127,5 @@ $(document).ready(function () {
 			return;
 		}
 	}, 1000);
-
 	
 });
