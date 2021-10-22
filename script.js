@@ -46,13 +46,16 @@ $(document).ready(function () {
 	// Input handling
 	$('body').bind('keypress', function (e) {
 		charTyped = String.fromCharCode(e.keyCode);
+		if (secondsRemaining > 0) TextCounter();
 		if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
+			// block = true;
 			if (charTyped !== quoteChars[currentIndex]) {
 				//if (block !== true) {
 					$("span").eq(currentIndex).css("background-color", "#e32957");
 					$("span").eq(currentIndex).addClass("wrong")
 					errorCount++;				
 					currentIndex++;
+					characterCount++;
 					//block = true;
 				//}
 			}
@@ -72,6 +75,7 @@ $(document).ready(function () {
 	});
 	//Keybind specifically for backspace. Requires binding to "keydown" instead of "keypress"
 	$('body').bind('keydown', function (e) {
+		TextCounter();
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
 			if (charTyped == 8) {
@@ -84,7 +88,7 @@ $(document).ready(function () {
 				currentIndex--;
 				characterCount--;
 
-				if ($("span").eq(currentIndex).hasClass("wrong")) {
+				if ($("span").eq(currentIndex).hasClass("wrong") && errorCount != 0) {
 					errorCount--;					
 				}
 				$("span").eq(currentIndex).css("background-color", "#00000000");
@@ -93,14 +97,12 @@ $(document).ready(function () {
 	});
 
 	let SecondsPassed = 0;
-	function wordspermin() {
-		wpm = Math.round((((characterCount / 5) / SecondsPassed)*60));
-		wordsperminEl.text("WPM: " + wpm.toString());
-	}
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
 		wcEl.text("Words Typed: " + wordCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
+		wpm = Math.round((((characterCount / 5) / SecondsPassed)*60));
+		wordsperminEl.text("WPM: " + wpm.toString());
 	}
 
 	// Timer
@@ -110,14 +112,12 @@ $(document).ready(function () {
 	let interval = setInterval(function () {
 		timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
 		if (secondsRemaining > 0) {
-			wordspermin();
 			TextCounter();
 			SecondsPassed++;
 			secondsRemaining--;	
-
 		}
 		else {
-			wordspermin();
+			TextCounter();
 			clearInterval(interval);
 			return;
 		}
