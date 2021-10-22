@@ -103,7 +103,7 @@ $(document).ready(function () {
 		ccEl.text("Characters Typed: " + characterCount.toString());
 		wcEl.text("Words Typed: " + wordCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
-		wpm = Math.round(((((characterCount / 5) - errorCount) / SecondsPassed)*60));
+		wpm = Math.floor(((((characterCount / 5) - errorCount) / SecondsPassed)*60));
 		if (wpm < 0 || isNaN(wpm) || wpm == Infinity) wpm = 0;
 		
 		wordsperminEl.text("WPM: " + wpm.toString());
