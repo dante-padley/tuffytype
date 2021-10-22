@@ -31,6 +31,7 @@ $(document).ready(function () {
 		currentIndex = 0;
 		// going through a loop that gets each individual character in the string, creating a span for it, and then setting the text to that span to the individual character. This makes it so we can apply individual colors to each one of our letters as needed.
 		quote.split("").forEach((character) => {
+			// we can add an ASCII filter here
 			const characterSpan = document.createElement("span");
 			characterSpan.innerText = character;
 			quoteEl.append(characterSpan);
@@ -46,8 +47,8 @@ $(document).ready(function () {
 	// Input handling
 	$('body').bind('keypress', function (e) {
 		charTyped = String.fromCharCode(e.keyCode);
-		if (secondsRemaining > 0) TextCounter();
-		if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
+		if (secondsRemaining != 0) TextCounter();
+		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 			// block = true;
 			if (charTyped !== quoteChars[currentIndex]) {
 				//if (block !== true) {
@@ -65,7 +66,7 @@ $(document).ready(function () {
 				wordCount = Math.floor(characterCount / 5);
 				currentIndex++;
 			}
-		}
+		// }
 		
 
 		if (currentIndex === quoteChars.length) {
@@ -75,7 +76,7 @@ $(document).ready(function () {
 	});
 	//Keybind specifically for backspace. Requires binding to "keydown" instead of "keypress"
 	$('body').bind('keydown', function (e) {
-		TextCounter();
+		if (secondsRemaining != 0) TextCounter();
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
 			if (charTyped == 8) {
@@ -101,7 +102,8 @@ $(document).ready(function () {
 		ccEl.text("Characters Typed: " + characterCount.toString());
 		wcEl.text("Words Typed: " + wordCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
-		wpm = Math.round((((characterCount / 5) / SecondsPassed)*60));
+		wpm = Math.round(((((characterCount / 5) - errorCount) / SecondsPassed)*60));
+		if (wpm < 0) wpm = 0;
 		wordsperminEl.text("WPM: " + wpm.toString());
 	}
 
