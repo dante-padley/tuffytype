@@ -46,7 +46,6 @@ async function renderNewQuote() {
     quoteDisplayElement.appendChild(characterSpan);
   });
   quoteInputElement.value = null;
-  //startTimer();
 }
 
 renderNewQuote();
