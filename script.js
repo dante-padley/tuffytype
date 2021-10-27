@@ -48,8 +48,9 @@ $(document).ready(function () {
 	$('body').bind('keypress', function (e) {
 		charTyped = String.fromCharCode(e.keyCode);
 		if (secondsRemaining != 0) TextCounter();
+		if (block == false) {Start_timer(); block = true;}
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
-			// block = true;
+
 			if (charTyped !== quoteChars[currentIndex]) {
 				//if (block !== true) {
 					$("span").eq(currentIndex).css("background-color", "#e32957");
@@ -113,19 +114,20 @@ $(document).ready(function () {
 	// Timer
 	let secondsRemaining = 60;
 	let timerEl = $("#timer");
-
-	let interval = setInterval(function () {
-		timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
-		if (secondsRemaining > 0) {
-			TextCounter();
-			SecondsPassed++;
-			secondsRemaining--;	
-		}
-		else {
-			TextCounter();
-			clearInterval(interval);
-			return;
-		}
-	}, 1000);
+	function Start_timer() {
+		let interval = setInterval(function () {
+			timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
+			if (secondsRemaining > 0) {
+				TextCounter();
+				SecondsPassed++;
+				secondsRemaining--;
+			}
+			else {
+				TextCounter();
+				clearInterval(interval);
+				return;
+			}
+		}, 1000);
+	}
 	
 });
