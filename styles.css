@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* font-family: "Libre Franklin", sans-serif; */
+  font-family: "Lora", serif;
+  color: #fff;
+  background-color: #084b8a;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* HEADER SECTION */
+header {
+  background-color: #00274c;
+  display: flex;
+  background: rgb(0, 39, 76);
+  background: radial-gradient(
+    circle,
+    rgb(0, 39, 76) 53%,
+    rgba(225, 112, 0) 100%
+  );
+}
+
+header h1 {
+  content: "";
+  /* border-bottom: 1px solid #e17000; */
+  width: 100%;
+  /* position: relative; */
+  text-align: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #ffff;
+}
+
+header a:hover,
+header a:focus {
+  color: #e17000;
+}
+
+/* BODY SECTION */
+body {
+  background-color: #ffff;
+  background-image: url(./images/CSUF_Background.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* TYPING CONTAINER */
+
+#main-title {
+  color: #00274c;
+  font-size: 2em;
+  font-weight: bolder;
+  text-shadow: 1px 2px 1px #000000a4;
+}
+
+.quote-display {
+  text-align: center;
+  /* color: #ffab4c; */
+  font-weight: 900;
+  background-color: #ffffffd7;
+  color: #000000;
+  border-radius: 40px;
+  padding: 2rem;
+}
+
+.typing-container {
+  font-size: 1.4rem;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0em 5rem;
+  margin-top: 1em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* to center it */
+  border-radius: 80px;
+  position: relative;
+}
+
+.stats {
+  text-align: center;
+  flex-direction: column;
+  background-color: #e17000e8;
+  border-radius: 80px;
+  padding: 0.4em;
+}
+
+#wordspermin {
+  font-weight: bolder;
+  text-shadow: 1px 3px 1px #000000a4;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+.timer {
+  font-weight: bolder;
+  text-shadow: 1px 3px 1px #000000a4;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#word-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#character-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+#error-count {
+  font-size: 1em;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1000px) {
+  .typing-container {
+    font-size: 1rem;
+  }
+}
