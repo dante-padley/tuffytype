@@ -4,13 +4,19 @@ $(document).ready(function () {
 	let wordCount = 0;
 	let characterCount = 0;
 	let errorCount = 0;
-	let wpm = 0;
+	let Gross_wpm = 0;
+	let Raw_wpm = 0;
+	let AccuracyPercent = 0;
+	let SecondsPassed = 0;
+	let secondsRemaining = 60;
 	let generatedQuote = ``;
+	let aaE1 = $("#accuracy-percent");
 	let wcEl = $("#word-count");
 	let ccEl = $("#character-count");
 	let ecEl = $("#error-count");
 	let quoteEl = $("#generated-quote");
 	let wordsperminEl = $("#wordspermin");
+	let RawwordsperminEl = $("#Rawwordspermin");
 	let quoteChars = '';
 	let userChars = [];
 	let currentIndex = 0;
@@ -40,9 +46,6 @@ $(document).ready(function () {
 		//quoteEl.value = null;
 	}
 	renderNewQuote()
-
-
-
 
 	// Input handling
 	$('body').bind('keypress', function (e) {
@@ -89,7 +92,7 @@ $(document).ready(function () {
 				}*/
 				currentIndex--;
 				characterCount--;
-				wordCount = Math.floor(characterCount / 5);
+				
 
 				if ($("span").eq(currentIndex).hasClass("wrong") && errorCount != 0) {
 					errorCount--;					
@@ -98,21 +101,33 @@ $(document).ready(function () {
 			}
 		}
 	});
-
-	let SecondsPassed = 0;
+	//handles all textcounter
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
-		wcEl.text("Words Typed: " + wordCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
-		wpm = Math.floor(((((characterCount / 5) - errorCount) / SecondsPassed)*60));
-		if (wpm < 0 || isNaN(wpm) || wpm == Infinity) wpm = 0;
-		
-		wordsperminEl.text("WPM: " + wpm.toString());
+		wpmCounter();
+		accuracy();
+		wcEl.text("Words Typed: " + wordCount.toString());
+		RawwordsperminEl.text("Raw WPM: " + Raw_wpm.toString());
+		aaE1.text("Accuracy: "+ AccuracyPercent.toString() + "%");
+		wordsperminEl.text("WPM: " + Gross_wpm.toString());
 	}
 
-	
+	//calculates all wpm's and word count
+	function wpmCounter() {
+		wordCount = Math.floor(characterCount / 5);
+		Gross_wpm = Math.floor(((wordCount - errorCount) / SecondsPassed) * 60);
+		Raw_wpm = Math.floor(((wordCount / SecondsPassed) * 60));
+		
+		if (Gross_wpm < 0 || isNaN(Gross_wpm) || Gross_wpm == Infinity) Gross_wpm = 0;
+		if (isNaN(Raw_wpm) || Raw_wpm == Infinity) Raw_wpm = 0;
+	}
+	//calculates the accuracy
+	function accuracy(){
+		AccuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+		AccuracyPercent = AccuracyPercent.toFixed(0);
+	}
 	// Timer
-	let secondsRemaining = 60;
 	let timerEl = $("#timer");
 	function Start_timer() {
 		let interval = setInterval(function () {
