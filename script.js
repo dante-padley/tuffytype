@@ -36,6 +36,38 @@ $(document).ready(function () {
 		const quote = await getRandomQuote();
 		quoteEl.empty();
 		currentIndex = 0;
+		let cleanQuote = false;
+		let dirtyChar = false;
+		let cleanChar = false;
+		
+		while(cleanQuote == false){
+			
+			var filteredQuote = quote;
+			filteredQuote = filteredQuote.split('');
+			
+			for(let x = 0; x < filteredQuote.length; x++){
+				if(filteredQuote[x].charCodeAt() < 126 && filteredQuote[x].charCodeAt() != 96 && filteredQuote[x].charCodeAt() != 95)
+				{
+					cleanChar = true;	
+				}
+				else
+				{
+					quote = await getRandomQuote();
+					dirtyChar = true;
+					break;
+				}
+			}
+			if(cleanChar == true && dirtyChar == false){
+				cleanQuote = true;
+				
+			}
+			else
+			{
+				
+				dirtyChar = false;
+				cleanChar = false;
+			}
+		}
 		// going through a loop that gets each individual character in the string, creating a span for it, and then setting the text to that span to the individual character. This makes it so we can apply individual colors to each one of our letters as needed.
 		quote.split("").forEach((character) => {
 			// we can add an ASCII filter here
@@ -60,10 +92,12 @@ $(document).ready(function () {
 
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
+			// block = true;
+			$("span").eq(currentIndex).addClass("blinking");
 			if (charTyped !== quoteChars[currentIndex]) {
 				//if (block !== true) {
 					$("span").eq(currentIndex).css("background-color", "#e32957");
-					$("span").eq(currentIndex).addClass("wrong")
+					$("span").eq(currentIndex).addClass("wrong");
 					errorCount++;				
 					currentIndex++;
 					characterCount++;
@@ -152,4 +186,14 @@ $(document).ready(function () {
 		}, 1000);
 	}
 	
+
+	// let started = false;
+ //  $('body').bind('keypress', function (){
+ //    if (!started) {
+ //      document.getElementById("main-title").styles.display = "none"
+ //    }
+ //    started = true;
+	// 			// start timer here
+ //   });
+
 });
