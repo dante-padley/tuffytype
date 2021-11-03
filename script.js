@@ -50,8 +50,13 @@ $(document).ready(function () {
 	// Input handling
 	$('body').bind('keypress', function (e) {
 		charTyped = String.fromCharCode(e.keyCode);
+
+		//updates counters on keypress
 		if (secondsRemaining != 0) TextCounter();
+
+		//starts timer
 		if (block == false) {Start_timer(); block = true;}
+
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
 			if (charTyped !== quoteChars[currentIndex]) {
@@ -80,6 +85,8 @@ $(document).ready(function () {
 	});
 	//Keybind specifically for backspace. Requires binding to "keydown" instead of "keypress"
 	$('body').bind('keydown', function (e) {
+
+		//updates counters on keypress
 		if (secondsRemaining != 0) TextCounter();
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
@@ -132,10 +139,11 @@ $(document).ready(function () {
 	function Start_timer() {
 		let interval = setInterval(function () {
 			timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
-			if (secondsRemaining > 0) {
+			
+			if (--secondsRemaining > 0) {
 				TextCounter();
 				SecondsPassed++;
-				secondsRemaining--;
+				//secondsRemaining--;
 			}
 			else {
 				TextCounter();
