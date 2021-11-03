@@ -22,7 +22,8 @@ $(document).ready(function () {
 	let currentIndex = 0;
 	let charTyped = null;
 	let block = false;
-
+	var myobj = document.getElementById("main-title");
+	
 	// this function uses the API to fetch the actual quote
 	function getRandomQuote() {
 		return fetch(RANDOM_QUOTE_API_URL)
@@ -55,7 +56,7 @@ $(document).ready(function () {
 		if (secondsRemaining != 0) TextCounter();
 
 		//starts timer
-		if (block == false) {Start_timer(); block = true;}
+		if (block == false) {Start_timer(); block = true; myobj.remove();}
 
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
