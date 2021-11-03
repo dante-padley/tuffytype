@@ -19,6 +19,16 @@
           <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
           <h2 id="wordspermin">WPM: 0</h2>
           <p class="quote-display" id="generated-quote"></p>
+          <!-- timer selection related code by salem-->
+		<label class="timer textcolor">Select Timer:
+			<select name="timer" id="timer1" class ="backcolor" selected onchange=timer_change();>
+				
+				<option value="1">Default 15 seconds</option>
+				<option value="2">30 Seconds</option>
+				<option value="3">45 Seconds</option>
+				<option value="4">60 seconds</option>
+			</select>
+		</label>
           <h2 id="word-count">Words Typed: 0</h2>
           <h2 id="error-count">Errors: 0</h2>
           <h2 id="character-count">Characters Typed: 0</h2>
