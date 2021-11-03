@@ -138,9 +138,7 @@ $(document).ready(function () {
 	let timerEl = $("#timer");
 	function Start_timer() {
 		let interval = setInterval(function () {
-			timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
-			
-			if (--secondsRemaining > 0) {
+			if (secondsRemaining-- > 0) {
 				TextCounter();
 				SecondsPassed++;
 				//secondsRemaining--;
@@ -150,6 +148,7 @@ $(document).ready(function () {
 				clearInterval(interval);
 				return;
 			}
+			timerEl.text("Seconds Remaining: " + secondsRemaining.toString());
 		}, 1000);
 	}
 	
