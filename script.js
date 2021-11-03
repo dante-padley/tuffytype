@@ -64,39 +64,14 @@ $(document).ready(function () {
 
 //writing timer fucntion by salem
 
-let secondsRemaining = 0;
+let secondsRemaining = 60;
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+//const delay = ms => new Promise(res => setTimeout(res, ms));
 const timer_change = async () => { 
 	
-	var t1 = 5;
-	var time_count = setInterval(function() {
-    $("#timer_start").text("The timer will start in: " + t1 + " seconds");
-    if (t1 > 0) {
-      t1--;
-    } else {
-      //wordspermin();
-      clearInterval(time_count);
-      return;
-    }
-  }, 1000);
-    secondsRemaining = 0;
-	$("#timer").text("Seconds Remaining: " + secondsRemaining);
-	await delay(5000);
-	
-	secondsRemaining = 0;
 	var select = document.getElementById('timer1');
 	var value = select.options[select.selectedIndex].value;
-	secondsRemaining = value*15;
-    var interval = setInterval(function() {
-    $("#timer").text("Seconds Remaining: " + secondsRemaining);
-    if (secondsRemaining > 0) {
-      secondsRemaining--;
-    } else {
-      //wordspermin();
-      clearInterval(interval);
-      return;
-    }
-  }, 1000);
-	
+	secondsRemaining = value;
+  $("#timer").text("Seconds Remaining: " + secondsRemaining);
+
 }
