@@ -50,10 +50,11 @@ $(document).ready(function () {
 		if (secondsRemaining != 0) TextCounter();
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 			// block = true;
+			$("span").eq(currentIndex).addClass("blinking");
 			if (charTyped !== quoteChars[currentIndex]) {
 				//if (block !== true) {
 					$("span").eq(currentIndex).css("background-color", "#e32957");
-					$("span").eq(currentIndex).addClass("wrong")
+					$("span").eq(currentIndex).addClass("wrong");
 					errorCount++;				
 					currentIndex++;
 					characterCount++;
@@ -128,4 +129,14 @@ $(document).ready(function () {
 		}
 	}, 1000);
 	
+
+	// let started = false;
+ //  $('body').bind('keypress', function (){
+ //    if (!started) {
+ //      document.getElementById("main-title").styles.display = "none"
+ //    }
+ //    started = true;
+	// 			// start timer here
+ //   });
+
 });
