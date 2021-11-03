@@ -141,7 +141,6 @@ $(document).ready(function () {
 			if (secondsRemaining-- > 0) {
 				TextCounter();
 				SecondsPassed++;
-				//secondsRemaining--;
 			}
 			else {
 				TextCounter();
