@@ -66,7 +66,7 @@ body {
 /* TYPING CONTAINER */
 
 #main-title {
-  color: #00274c;
+  color: #ffffff;
   font-size: 2em;
   font-weight: bolder;
   text-shadow: 1px 2px 1px #000000a4;
@@ -133,6 +133,20 @@ body {
   font-size: 1em;
   padding: 0px 1em 0px;
   display: inline-block;
+}
+
+.blinking {
+  box-shadow: 0.12em 0 0 #000000;
+  animation: blink 0.55s infinite linear;
+}
+
+@keyframes blink {
+  from {
+    box-shadow: 0.12em 0 0 #000000;
+  }
+  to {
+    box-shadow: none;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
