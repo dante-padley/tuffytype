@@ -196,4 +196,15 @@ $(document).ready(function () {
 	// 			// start timer here
  //   });
 
+  const timer_change = async () => { 
+	
+	    var select = document.getElementById('timer1');
+	    var value = select.options[select.selectedIndex].value;
+	    secondsRemaining = value;
+      $("#timer").text("Seconds Remaining: " + secondsRemaining);
+
+  }
 });
+
+
+
