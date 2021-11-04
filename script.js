@@ -53,7 +53,7 @@ $(document).ready(function () {
 		charTyped = String.fromCharCode(e.keyCode);
 
 		//updates counters on keypress
-		if (secondsRemaining != 0) TextCounter();
+		if (secondsRemaining > 0) TextCounter();
 
 		//starts timer
 		if (block == false) {Start_timer(); block = true; myobj.remove();}
@@ -88,7 +88,7 @@ $(document).ready(function () {
 	$('body').bind('keydown', function (e) {
 
 		//updates counters on keypress
-		if (secondsRemaining != 0) TextCounter();
+		if (secondsRemaining > 0) TextCounter();
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
 			if (charTyped == 8) {
