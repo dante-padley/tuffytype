@@ -1,5 +1,5 @@
 const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random";
-
+var timer_function;
 $(document).ready(function () {
 	let wordCount = 0;
 	let characterCount = 0;
@@ -196,14 +196,20 @@ $(document).ready(function () {
 	// 			// start timer here
  //   });
 
-  const timer_change = async () => { 
-	
-	    var select = document.getElementById('timer1');
-	    var value = select.options[select.selectedIndex].value;
-	    secondsRemaining = value;
-      $("#timer").text("Seconds Remaining: " + secondsRemaining);
+  timer_change = async function() {
 
-  }
+    var select = document.getElementById('timer1');
+    var value = select.options[select.selectedIndex].value;
+    secondsRemaining = value;
+    $("#timer").text("Seconds Remaining: " + secondsRemaining);
+
+  }/*
+  $("#timer1").onchange(function(){
+    var select = document.getElementById('timer1');
+    var value = select.options[select.selectedIndex].value;
+    secondsRemaining = value;
+    timerEl.text("Seconds Remaining: " + secondsRemaining);
+  });*/
 });
 
 
