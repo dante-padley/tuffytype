@@ -85,7 +85,7 @@ $(document).ready(function () {
 		charTyped = String.fromCharCode(e.keyCode);
 
 		//updates counters on keypress
-		if (secondsRemaining != 0) TextCounter();
+		if (secondsRemaining > 0) TextCounter();
 
 		//starts timer
 		if (block == false) {Start_timer(); block = true; myobj.remove();}
@@ -122,7 +122,7 @@ $(document).ready(function () {
 	$('body').bind('keydown', function (e) {
 
 		//updates counters on keypress
-		if (secondsRemaining != 0) TextCounter();
+		if (secondsRemaining > 0) TextCounter();
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
 			if (charTyped == 8) {
@@ -143,7 +143,7 @@ $(document).ready(function () {
 			}
 		}
 	});
-	//handles all textcounter
+	//handles all textcounters
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
@@ -166,8 +166,11 @@ $(document).ready(function () {
 	}
 	//calculates the accuracy
 	function accuracy(){
+		
 		AccuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+		if (isNaN(AccuracyPercent)) AccuracyPercent = 0;
 		AccuracyPercent = AccuracyPercent.toFixed(0);
+		
 	}
 	// Timer
 	let timerEl = $("#timer");
