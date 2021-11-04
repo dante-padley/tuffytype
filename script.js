@@ -143,7 +143,7 @@ $(document).ready(function () {
 			}
 		}
 	});
-	//handles all textcounter
+	//handles all textcounters
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
@@ -166,8 +166,11 @@ $(document).ready(function () {
 	}
 	//calculates the accuracy
 	function accuracy(){
+		
 		AccuracyPercent = ((characterCount - errorCount)/characterCount)*100;
+		if (isNaN(AccuracyPercent)) AccuracyPercent = 0;
 		AccuracyPercent = AccuracyPercent.toFixed(0);
+		
 	}
 	// Timer
 	let timerEl = $("#timer");
