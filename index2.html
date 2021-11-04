@@ -6,6 +6,7 @@
     <title>Tuffy Type</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="button.js"></script>
     <title>Tuffy Types</title>
   </head>
   <body>
@@ -18,7 +19,10 @@
         <div class="stats">
           <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
           <h2 id="wordspermin">WPM: 0</h2>
+          <h2 id="Rawwordspermin">Raw WPM: 0</h2>
+          <h2 id="accuracy-percent">Accuracy: 0</h2>
           <p class="quote-display" id="generated-quote"></p>
+
           <!-- timer selection related code by salem-->
 		<label class="timer textcolor">Select Timer:
 			<select name="timer" id="timer1" class ="backcolor" selected onchange=timer_change();>
@@ -29,6 +33,9 @@
 				<option value="60">60 seconds</option>
 			</select>
 		</label>
+
+          <button type="button" id="restartButton"onclick="restart()">RESTART</button>
+
           <h2 id="word-count">Words Typed: 0</h2>
           <h2 id="error-count">Errors: 0</h2>
           <h2 id="character-count">Characters Typed: 0</h2>
