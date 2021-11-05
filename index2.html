@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <h1><a href="index.html"> CSUF Tuffy Types </a></h1>
+      <h1><a href="index2.html"> CSUF Tuffy Types </a></h1>
     </header>
     <main>
       <div class="typing-container">
@@ -27,5 +27,23 @@
       </div>
     </main>
     <script src="script.js"></script>
+    <!-- modal -->
+    <div class="bg-modal" id="modal-id">
+      <div class="modal-content">
+        <h2 id="character-count-2" class="charCount">Characters Typed: 0</h2>
+        <h2 id="word-count-2" class="wordsTyped">Words Typed: 0</h2>
+        <h2 id="error-count-2" class="errCount">Errors: 0</h2>
+        <h2 id="wordspermin-2" class="wpm">WPM: 0</h2>
+        <span>
+          <button
+            class="play-again-button"
+            id="button"
+            onClick="window.location.reload();"
+          >
+            Play again?
+          </button>
+        </span>
+      </div>
+    </div>
   </body>
 </html>
