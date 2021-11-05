@@ -1,50 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Tuffy Type</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="testing.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="button.js"></script>
     <title>Tuffy Types</title>
   </head>
   <body>
     <header>
-      <!-- <img src="./images/Tuffy.png" alt="tuffy" id="tuffy-img" /> -->
-      <h1><a href="index.html"> CSUF Tuffy Types </a></h1>
+      <h1><a href="index2.html"> CSUF Tuffy Types </a></h1>
     </header>
-
     <main>
       <div class="typing-container">
-        <div class="timer" id="timer">0</div>
-        <h3 class="quote-display" id="quoteDisplay">generating quote....</h3>
-        <h4 id="word-count">Words Typed: 0</h4>
-        <h4 id="character-count">Characters Typed: 0</h4>
-        <h4 id="error-count">Errors: 0</h4>
-        <p id="generated-quote"></p>
-        <h3 id="text-field"></h3>
-        <br>
-        <h4 id="timer">Seconds Remaining: 60</h4>
-        <h4 id="wordspermin">WPM: 0</h4>
-        <div class="typing-container-row">
-          <textarea
-            id="quoteInput"
-            class="quote-input"
-            cols="50"
-            rows="100"
-            placeholder="The clock starts when you start typing."
-            autofocus
-          ></textarea>
+        <h2 id="main-title">Start Typing To Begin!</h2>
+        <div class="stats">
+          <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
+          <h2 id="wordspermin">WPM: 0</h2>
+          <h2 id="Rawwordspermin">Raw WPM: 0</h2>
+          <h2 id="accuracy-percent">Accuracy: 0</h2>
+          <p class="quote-display" id="generated-quote"></p>
 
+          <!-- timer selection related code by salem-->
+		<label class="timer textcolor">Select Timer:
+			<select name="timer" id="timer1" class ="backcolor" selected onchange="timer_change()">
+				
+				<option value="15">15 seconds</option>
+				<option value="30">30 Seconds</option>
+				<option value="45">45 Seconds</option>
+				<option value="60" selected>60 seconds</option>
+			</select>
+		</label>
+
+          <button type="button" id="restartButton"onclick="restart()">RESTART</button>
+
+          <h2 id="word-count">Words Typed: 0</h2>
+          <h2 id="error-count">Errors: 0</h2>
+          <h2 id="character-count">Characters Typed: 0</h2>
         </div>
+        <br />
       </div>
     </main>
-
-
-    <!--- JAVASCRIPT -->
-
     <script src="script.js"></script>
-
+    <!-- modal -->
+    <div class="bg-modal" id="modal-id">
+      <div class="modal-content">
+        <h2 id="character-count-2" class="charCount">Characters Typed: 0</h2>
+        <h2 id="word-count-2" class="wordsTyped">Words Typed: 0</h2>
+        <h2 id="error-count-2" class="errCount">Errors: 0</h2>
+        <h2 id="wordspermin-2" class="wpm">WPM: 0</h2>
+        <span>
+          <button
+            class="play-again-button"
+            id="button"
+            onClick="window.location.reload();"
+          >
+            Play again?
+          </button>
+        </span>
+      </div>
+    </div>
   </body>
 </html>

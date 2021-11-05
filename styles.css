@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
@@ -66,7 +67,7 @@ body {
 /* TYPING CONTAINER */
 
 #main-title {
-  color: #00274c;
+  color: #ffffff;
   font-size: 2em;
   font-weight: bolder;
   text-shadow: 1px 2px 1px #000000a4;
@@ -105,7 +106,7 @@ body {
 
 #wordspermin {
   font-weight: bolder;
-  text-shadow: 1px 3px 1px #000000a4;
+  /* text-shadow: 1px 3px 1px #000000a4; */
   padding: 0px 1em 0px;
   display: inline-block;
 }
@@ -135,8 +136,95 @@ body {
   display: inline-block;
 }
 
+.blinking {
+  box-shadow: 0.12em 0 0 #000000;
+  animation: blink 0.55s infinite linear;
+}
+
+@keyframes blink {
+  from {
+    box-shadow: 0.12em 0 0 #000000;
+  }
+  to {
+    box-shadow: none;
+  }
+  /* written by salem */
+
+.textcolor {
+	
+	color: #00376b;
+}
+
+.backcolor {
+	
+	background-color: #00376b;
+	color: #fff;
+}
+}
+
 @media only screen and (max-width: 1000px) {
   .typing-container {
     font-size: 1rem;
   }
+}
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  display: flex;
+}
+
+#modal-id {
+  display: none;
+}
+
+.modal-content {
+  width: 550px;
+  height: 300px;
+  background-color: #e17000;
+  border-radius: 4px;
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 0.8rem;
+}
+
+.charCount {
+  padding: 0px 20px 0px;
+  display: inline-block;
+}
+
+.wordsTyped {
+  padding: 0px 20px 0px;
+  display: inline-block;
+}
+
+.wpm {
+  display: block;
+  width: 100%;
+  font-size: 2.5rem;
+}
+
+.play-again-button {
+  background-color: #00274c; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 40px;
+  width: 100%;
+}
+
+.play-again-button:hover {
+  cursor: pointer;
+  background-color: #0bd476;
 }
