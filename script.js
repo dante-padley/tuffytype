@@ -24,6 +24,13 @@ $(document).ready(function () {
 	let block = false;
 	var myobj = document.getElementById("main-title");
 	
+    // stats page stuff
+    let modalEl = $("#bg-modal");
+    let wcEl2 = $("#word-count-2");
+    let ccEl2 = $("#character-count-2");
+    let ecEl2 = $("#error-count-2");
+    let wordsperminEl2 = $("#wordspermin-2");
+
 	// this function uses the API to fetch the actual quote
 	function getRandomQuote() {
 		return fetch(RANDOM_QUOTE_API_URL)
@@ -146,13 +153,17 @@ $(document).ready(function () {
 	//handles all textcounters
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
+    ccEl2.text("Characters Typed: " + characterCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
+    ecEl2.text("Errors: " + errorCount.toString());
 		wpmCounter();
 		accuracy();
 		wcEl.text("Words Typed: " + wordCount.toString());
+    wcEl2.text("Words Typed: " + wordCount.toString());
 		RawwordsperminEl.text("Raw WPM: " + Raw_wpm.toString());
 		aaE1.text("Accuracy: "+ AccuracyPercent.toString() + "%");
 		wordsperminEl.text("WPM: " + Gross_wpm.toString());
+    wordsperminEl2.text("WPM: " + Gross_wpm.toString());
 	}
 
 	//calculates all wpm's and word count
@@ -181,6 +192,8 @@ $(document).ready(function () {
 				SecondsPassed++;
 			}
 			else {
+        $("#modal-id").css("display", "flex");
+        displaymodal();
 				TextCounter();
 				clearInterval(interval);
 				return;
@@ -214,6 +227,3 @@ $(document).ready(function () {
     timerEl.text("Seconds Remaining: " + secondsRemaining);
   });*/
 });
-
-
-
