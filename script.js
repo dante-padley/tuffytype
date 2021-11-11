@@ -40,6 +40,24 @@ $(document).ready(function () {
 
 	// this function handles the quote and puts the quote into the quoteDisplay element to display it to the user.
 	async function renderNewQuote() {
+		//NOTES to self on adjusting this.
+		/*
+		Basically, we want to abstract this so we can grab clean quotes whenever and move them around.
+		So getRandomQuote() should have the filter code in it.
+		We might move the code on line 85 to a new function similar to this called "renderFirstQuotes"
+		that calls getRandomQuote 2 times and assembles the typing test like normal.
+		We want to keep track of the char array of the very first and second quote pulled with the 
+		"quoteChars" variable and maybe a "quoteChars2" OR we can think about moving to an array with these 2.
+
+		The operation of renderNewQuote will be like this:
+		-const quote = await getRandomQuote()
+		-remove quoteChars.length amount of spans from the beginning of quoteEl
+		-quoteChars = quoteChars2
+		-turn the new quote into a char array and append it to the quoteEl like normal
+		-quoteChars2 = the new quote char array
+		
+		
+		*/
 		const quote = await getRandomQuote();
 		quoteEl.empty();
 		currentIndex = 0;
