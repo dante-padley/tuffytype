@@ -203,15 +203,6 @@ $(document).ready(function () {
 	}
 	
 
-	// let started = false;
- //  $('body').bind('keypress', function (){
- //    if (!started) {
- //      document.getElementById("main-title").styles.display = "none"
- //    }
- //    started = true;
-	// 			// start timer here
- //   });
-
   timer_change = async function() {
 
     var select = document.getElementById('timer1');
