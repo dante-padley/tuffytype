@@ -95,7 +95,7 @@ $(document).ready(function () {
 		if (secondsRemaining > 0) TextCounter();
 
 		//starts timer
-		if (block == false) {Start_timer(); block = true; myobj.remove();}
+		if (block == false) {Start_timer(); block = true; $(myobj).fadeOut(2000);}
 
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
