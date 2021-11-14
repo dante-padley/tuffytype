@@ -135,6 +135,11 @@ body {
   padding: 0px 1em 0px;
   display: inline-block;
 }
+.hidden{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
 
 .blinking {
   box-shadow: 0.12em 0 0 #000000;
@@ -148,6 +153,7 @@ body {
   to {
     box-shadow: none;
   }
+}
   /* written by salem */
 
 .textcolor {
@@ -160,7 +166,7 @@ body {
 	background-color: #00376b;
 	color: #fff;
 }
-}
+
 
 @media only screen and (max-width: 1000px) {
   .typing-container {
