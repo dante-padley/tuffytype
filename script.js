@@ -27,9 +27,19 @@ $(document).ready(function () {
     // stats page stuff
     let modalEl = $("#bg-modal");
     let wcEl2 = $("#word-count-2");
+	let RcEl2 = $("#Rawwordspermin-2");
+	let AcEl2 = $("#accuracy-percent-2");
     let ccEl2 = $("#character-count-2");
     let ecEl2 = $("#error-count-2");
     let wordsperminEl2 = $("#wordspermin-2");
+	
+		document.getElementById("Rawwordspermin").style.display = "none";
+		document.getElementById("word-count").style.display = "none";
+		document.getElementById("error-count").style.display = "none";
+		document.getElementById("character-count").style.display = "none";
+		document.getElementById("accuracy-percent").style.display = "none";
+		document.getElementById("wordspermin").style.display = "none";
+
 
 	// this function uses the API to fetch the actual quote
 	function getRandomQuote() {
@@ -89,8 +99,19 @@ $(document).ready(function () {
 
 	// Input handling
 	$('body').bind('keypress', function (e) {
+		
+		
 		charTyped = String.fromCharCode(e.keyCode);
-
+		/*if(charTyped!==null)
+		{
+			
+		document.getElementById("Rawwordspermin").style.display = "block";
+		document.getElementById("word-count").style.display = "block";
+		document.getElementById("error-count").style.display = "block";
+		document.getElementById("character-count").style.display = "block";
+		document.getElementById("accuracy-percent").style.display = "block";
+		document.getElementById("wordspermin").style.display = "block";
+		}*/
 		//updates counters on keypress
 		if (secondsRemaining > 0) TextCounter();
 
@@ -153,13 +174,15 @@ $(document).ready(function () {
 	//handles all textcounters
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
-    ccEl2.text("Characters Typed: " + characterCount.toString());
+		ccEl2.text("Characters Typed: " + characterCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
-    ecEl2.text("Errors: " + errorCount.toString());
+		ecEl2.text("Errors: " + errorCount.toString());
 		wpmCounter();
 		accuracy();
 		wcEl.text("Words Typed: " + wordCount.toString());
-    wcEl2.text("Words Typed: " + wordCount.toString());
+		wcEl2.text("Words Typed: " + wordCount.toString());
+		RcEl2.text("WPM: " + Gross_wpm.toString());
+		AcEl2.text("Accuracy: " + AccuracyPercent.toString());
 		RawwordsperminEl.text("Raw WPM: " + Raw_wpm.toString());
 		aaE1.text("Accuracy: "+ AccuracyPercent.toString() + "%");
 		wordsperminEl.text("WPM: " + Gross_wpm.toString());
