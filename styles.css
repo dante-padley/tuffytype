@@ -118,6 +118,13 @@ body {
   display: inline-block;
 }
 
+.restartButton {
+  font-weight: bolder;
+  text-shadow: 1px 3px 1px #000000a4;
+  padding: 0px 1em 0px;
+  display: inline-block;
+}
+
 #word-count {
   font-size: 1em;
   padding: 0px 1em 0px;
