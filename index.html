@@ -6,61 +6,87 @@
     <title>Tuffy Type</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/0be9d41a52.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="button.js"></script>
     <title>Tuffy Types</title>
   </head>
-  <body>
-    <header>
+    <main>
+      <body>
+            <header>
       <h1><a href="index2.html"> CSUF Tuffy Types </a></h1>
     </header>
-    <main>
-      <div class="typing-container">
-        <h2 id="main-title">Start Typing To Begin!</h2>
-        <div class="stats">
-          <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
-          <h2 id="wordspermin">WPM: 0</h2>
-          <h2 id="Rawwordspermin">Raw WPM: 0</h2>
-          <h2 id="accuracy-percent">Accuracy: 0</h2>
-          <p class="quote-display" id="generated-quote"></p>
+        <div class="typing-container">
+          <div>
+            <input
+              type="checkbox"
+              name="checkbox"
+              id="checkbox"
+              class="checkbox"
+            />
+            <label for="checkbox" class="label">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+          <h2 id="main-title">Start Typing To Begin!</h2>
+          <div class="stats">
+            <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
+            <h2 id="wordspermin">WPM: 0</h2>
+            <h2 id="Rawwordspermin">Raw WPM: 0</h2>
+            <h2 id="accuracy-percent">Accuracy: 0</h2>
+            <p class="quote-display" id="generated-quote"></p>
 
-          <!-- timer selection related code by salem-->
-		<label class="timer textcolor">Select Timer:
-			<select name="timer" id="timer1" class ="backcolor" selected onchange="timer_change()">
-				
-				<option value="15">15 seconds</option>
-				<option value="30">30 Seconds</option>
-				<option value="45">45 Seconds</option>
-				<option value="60" selected>60 seconds</option>
-			</select>
-		</label>
+            <!-- timer selection related code by salem-->
+            <label class="timer textcolor"
+              >Select Timer:
+              <select
+                name="timer"
+                id="timer1"
+                class="backcolor"
+                selected
+                onchange="timer_change()"
+              >
+                <option value="15">15 seconds</option>
+                <option value="30">30 Seconds</option>
+                <option value="45">45 Seconds</option>
+                <option value="60" selected>60 seconds</option>
+              </select>
+            </label>
 
-          <button type="button" id="restartButton"onclick="restart()">RESTART</button>
+            <button type="button" id="restartButton" onclick="restart()">
+              RESTART
+            </button>
 
-          <h2 id="word-count">Words Typed: 0</h2>
-          <h2 id="error-count">Errors: 0</h2>
-          <h2 id="character-count">Characters Typed: 0</h2>
+            <h2 id="word-count">Words Typed: 0</h2>
+            <h2 id="error-count">Errors: 0</h2>
+            <h2 id="character-count">Characters Typed: 0</h2>
+          </div>
+          <br />
         </div>
-        <br />
+      </main>
+      <script src="script.js"></script>
+      <!-- modal -->
+      <div class="bg-modal" id="modal-id">
+        <div class="modal-content">
+          <h2 id="character-count-2" class="charCount">Characters Typed: 0</h2>
+          <h2 id="word-count-2" class="wordsTyped">Words Typed: 0</h2>
+          <h2 id="error-count-2" class="errCount">Errors: 0</h2>
+          <h2 id="wordspermin-2" class="wpm">WPM: 0</h2>
+          <span>
+            <button
+              class="play-again-button"
+              id="button"
+              onClick="window.location.reload();"
+            >
+              Play again?
+            </button>
+          </span>
+        </div>
       </div>
-    </main>
-    <script src="script.js"></script>
-    <!-- modal -->
-    <div class="bg-modal" id="modal-id">
-      <div class="modal-content">
-        <h2 id="character-count-2" class="charCount">Characters Typed: 0</h2>
-        <h2 id="word-count-2" class="wordsTyped">Words Typed: 0</h2>
-        <h2 id="error-count-2" class="errCount">Errors: 0</h2>
-        <h2 id="wordspermin-2" class="wpm">WPM: 0</h2>
-        <span>
-          <button
-            class="play-again-button"
-            id="button"
-            onClick="window.location.reload();"
-          >
-            Play again?
-          </button>
-        </span>
-      </div>
-    </div>
+    <script src="darkMode.js"></script>
   </body>
 </html>
