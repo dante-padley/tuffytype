@@ -6,22 +6,42 @@
     <title>Tuffy Type</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/0be9d41a52.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="button.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tuffy Types</title>
+    <link rel="icon" type="image/png" href="/images/FullertonIcon.png">
   </head>
-  <body>
-    <header>
-      <h1><a href="index2.html"> CSUF Tuffy Types </a></h1>
-    </header>
     <main>
-      <div class="typing-container">
-        <h2 id="main-title">Start Typing To Begin!</h2>
-        <div class="stats">
-          <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
-          <h2 id="wordspermin">WPM: 0</h2>
-          <h2 id="Rawwordspermin">Raw WPM: 0</h2>
-          <h2 id="accuracy-percent">Accuracy: 0</h2>
-          <p class="quote-display" id="generated-quote"></p>
+      <body>
+            <header>
+      <h1><a href="index.html"> CSUF Tuffy Types </a></h1>
+
+    </header>
+        <div class="typing-container">
+          <div>
+            <input
+              type="checkbox"
+              name="checkbox"
+              id="checkbox"
+              class="checkbox"
+            />
+            <label for="checkbox" class="label">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+          <h2 id="main-title">Start Typing To Begin!</h2>
+          <div class="stats">
+            <h2 class="timer" id="timer">Seconds Remaining: 60</h2>
+            <h2 id="wordspermin">WPM: 0</h2>
+            <h2 id="Rawwordspermin">Raw WPM: 0</h2>
+            <h2 id="accuracy-percent">Accuracy: 0</h2>
+            <p class="quote-display" id="generated-quote"></p>
 
           <!-- timer selection related code by salem-->
 		<label class="timer textcolor">Select Timer:
@@ -33,13 +53,13 @@
 				<option value="60" selected>60 seconds</option>
 			</select>
 		</label>
-
-          <button type="button" id="restartButton"onclick="restart()">RESTART</button>
-
+          <label class="restartButton textcolor">Restart:  
+          <button style="font-size:28px" id ="restartButton" onclick= "restart()"> <i class="fa fa-refresh"></i></button>
+          </label>
           <h2 id="word-count">Words Typed: 0</h2>
           <h2 id="error-count">Errors: 0</h2>
           <h2 id="character-count">Characters Typed: 0</h2>
-        </div>
+          </div>         
         <br />
       </div>
     </main>
@@ -62,7 +82,8 @@
             Play again?
           </button>
         </span>
+
       </div>
-    </div>
+    <script src="darkMode.js"></script>
   </body>
 </html>

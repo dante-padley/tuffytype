@@ -18,6 +18,8 @@ $(document).ready(function () {
 	let wordsperminEl = $("#wordspermin");
 	let RawwordsperminEl = $("#Rawwordspermin");
 	let quoteChars = '';
+	let topQuoteLength = 0;
+	let bottomQuoteLength = 0;
 	let userChars = [];
 	let currentIndex = 0;
 	let charTyped = null;
@@ -45,46 +47,55 @@ $(document).ready(function () {
 	function getRandomQuote() {
 		return fetch(RANDOM_QUOTE_API_URL)
 			.then((response) => response.json())
-			.then((data) => data.content);
+			.then((data) => data.content)
+			.then((quote) => {
+				let clean = cleanQuote(quote);
+				return clean;
+			});
 	}
-
-	// this function handles the quote and puts the quote into the quoteDisplay element to display it to the user.
-	async function renderNewQuote() {
-		const quote = await getRandomQuote();
-		quoteEl.empty();
-		currentIndex = 0;
+	// this function rejects the current quote if it has the Forbidden Characters
+	async function cleanQuote(inputQuote) {
+		let quote = inputQuote
 		let cleanQuote = false;
 		let dirtyChar = false;
 		let cleanChar = false;
-		
-		while(cleanQuote == false){
-			
+
+		while (cleanQuote == false) {
+
 			var filteredQuote = quote;
 			filteredQuote = filteredQuote.split('');
-			
-			for(let x = 0; x < filteredQuote.length; x++){
-				if(filteredQuote[x].charCodeAt() < 126 && filteredQuote[x].charCodeAt() != 96 && filteredQuote[x].charCodeAt() != 95)
-				{
-					cleanChar = true;	
+
+			for (let x = 0; x < filteredQuote.length; x++) {
+				if (filteredQuote[x].charCodeAt() < 126 && filteredQuote[x].charCodeAt() != 96 && filteredQuote[x].charCodeAt() != 95) {
+					cleanChar = true;
 				}
-				else
-				{
+				else {
 					quote = await getRandomQuote();
 					dirtyChar = true;
 					break;
 				}
 			}
-			if(cleanChar == true && dirtyChar == false){
+			if (cleanChar == true && dirtyChar == false) {
 				cleanQuote = true;
-				
+
 			}
-			else
-			{
-				
+			else {
+
 				dirtyChar = false;
 				cleanChar = false;
 			}
 		}
+		return quote;
+	}
+	// this function handles new quotes after the start of the test and manages their respective variables.
+	async function renderNewQuote() {
+
+		let quote = await getRandomQuote();
+		removeTopQuote();
+		quote += '\n';
+		topQuoteLength = bottomQuoteLength;
+		bottomQuoteLength = quote.length - 1;
+		currentIndex = 0;
 		// going through a loop that gets each individual character in the string, creating a span for it, and then setting the text to that span to the individual character. This makes it so we can apply individual colors to each one of our letters as needed.
 		quote.split("").forEach((character) => {
 			// we can add an ASCII filter here
@@ -92,10 +103,45 @@ $(document).ready(function () {
 			characterSpan.innerText = character;
 			quoteEl.append(characterSpan);
 		});
-		quoteChars = quote.split("");
+		quoteChars.push.apply(quoteChars, quote.split(""));
 		//quoteEl.value = null;
 	}
-	renderNewQuote()
+	// this function removes the top quote from the page and from the quoteChars variable
+	function removeTopQuote(){
+		//use length of top quote to remove the right amount of spans
+		//make a loop that runs length times
+		//for each run, delete just the first span
+		let counter = topQuoteLength + 1;
+		while(counter > 0){
+			$("span:first").remove();
+			
+			counter--;
+		}
+		quoteChars.splice(0, topQuoteLength + 1);
+	}
+	// This function renders the first 2 quotes to the element and records their lengths
+	async function renderFirstQuotes(){
+		
+		let quote = await getRandomQuote();
+		//record the length of the first quote
+		topQuoteLength = quote.length;
+		let quote2 = await getRandomQuote();
+		// record the length of the second quote
+		bottomQuoteLength = quote2.length;
+		// add a single  character in between them (so one of the quote lengths is actually wrong)
+		quote = quote + '\n' + quote2 + '\n';
+		quote.split("").forEach((character) => {
+			// we can add an ASCII filter here
+			const characterSpan = document.createElement("span");
+			characterSpan.innerText = character;
+			//characterSpan.addClass("quoteChar")
+			quoteEl.append(characterSpan);
+		});
+		quoteChars = quote.split("");
+	}
+
+	// This is the first function call. It produces the first quotes on the page.
+	renderFirstQuotes();
 
 	// Input handling
 	$('body').bind('keypress', function (e) {
@@ -116,7 +162,7 @@ $(document).ready(function () {
 		if (secondsRemaining > 0) TextCounter();
 
 		//starts timer
-		if (block == false) {Start_timer(); block = true; myobj.remove();}
+		if (block == false) {Start_timer(); block = true; $(myobj).addClass("hidden");}
 
 		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
@@ -141,7 +187,7 @@ $(document).ready(function () {
 		// }
 		
 
-		if (currentIndex === quoteChars.length) {
+		if (currentIndex === topQuoteLength) {
 			renderNewQuote();
 			return;
 		}
@@ -225,15 +271,6 @@ $(document).ready(function () {
 		}, 1000);
 	}
 	
-
-	// let started = false;
- //  $('body').bind('keypress', function (){
- //    if (!started) {
- //      document.getElementById("main-title").styles.display = "none"
- //    }
- //    started = true;
-	// 			// start timer here
- //   });
 
   timer_change = async function() {
 
