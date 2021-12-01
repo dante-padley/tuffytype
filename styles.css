@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
@@ -9,16 +8,23 @@
   box-sizing: border-box;
 }
 
+* {
+  font-family: "Lora", serif;
+}
+
 body {
   margin: 0;
-  /* font-family: "Libre Franklin", sans-serif; */
   font-family: "Lora", serif;
   color: #fff;
-  background-color: #084b8a;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+  background-color: rgb(0, 0, 0);
+  background-image: url(./images/CSUF_Background.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 img {
@@ -30,6 +36,8 @@ img {
 header {
   background-color: #00274c;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   background: rgb(0, 39, 76);
   background: radial-gradient(
     circle,
@@ -56,14 +64,50 @@ header a:focus {
   color: #e17000;
 }
 
-/* BODY SECTION */
-body {
-  background-color: #ffff;
-  background-image: url(./images/CSUF_Background.png);
-  background-repeat: repeat;
-  background-attachment: fixed;
+.checkbox {
+  opacity: 0;
+  position: absolute;
 }
 
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.label {
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  border-radius: 50px;
+  padding: 5px;
+  height: 26px;
+  width: 50px;
+  margin: 0;
+  transform: scale(1.5);
+}
+
+.ball {
+  background-color: #fff;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  transition: transform 0.2s linear;
+}
+
+.fa-moon {
+  font-size: 1rem;
+  color: #f1c40f;
+}
+
+.fa-sun {
+  font-size: 1rem;
+  color: #f39c12;
+}
 /* TYPING CONTAINER */
 
 #main-title {
@@ -150,16 +194,14 @@ body {
   }
   /* written by salem */
 
-.textcolor {
-	
-	color: #00376b;
-}
+  .textcolor {
+    color: #00376b;
+  }
 
-.backcolor {
-	
-	background-color: #00376b;
-	color: #fff;
-}
+  .backcolor {
+    background-color: #00376b;
+    color: #fff;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -226,5 +268,91 @@ body {
 
 .play-again-button:hover {
   cursor: pointer;
+  background-color: #0bd476;
+}
+
+/* dark mode */
+
+body.dark {
+  margin: 0;
+  font-family: "Lora", serif;
+  color: #ffffffd7;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0);
+  background-image: url(./images/darkbackgroundimage2.jpeg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+body.dark header {
+  background-color: #969696d7;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgb(0, 0, 0) 53%,
+    rgb(126, 126, 126) 100%
+  );
+}
+
+body.dark header a {
+  color: #ffffffd7;
+}
+
+body.dark .stats {
+  text-align: center;
+  flex-direction: column;
+  background-color: #000000e8;
+  border-radius: 80px;
+  padding: 0.4em;
+}
+
+body.dark .quote-display {
+  text-align: center;
+  /* color: #ffab4c; */
+  font-weight: 900;
+  background-color: #969696d7;
+  color: #000000;
+  border-radius: 40px;
+  padding: 2rem;
+}
+
+body.dark #main-title {
+  color: #ffffffd7;
+  font-size: 2em;
+  font-weight: bolder;
+  text-shadow: 1px 2px 1px #000000;
+}
+
+body.dark .modal-content {
+  width: 550px;
+  height: 300px;
+  background-color: #000000;
+  border-radius: 4px;
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 0.8rem;
+}
+
+body.dark .play-again-button {
+  background-color: #969696d7; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 40px;
+  width: 100%;
+}
+
+body.dark .play-again-button:hover {
   background-color: #0bd476;
 }
