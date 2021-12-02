@@ -194,7 +194,7 @@ header a:focus {
 
 .blinking {
   box-shadow: 0.12em 0 0 #000000;
-  animation: blink 0.55s infinite linear;
+  animation: blink 0.8s linear 0.5s infinite;
 }
 
 @keyframes blink {
@@ -207,16 +207,16 @@ header a:focus {
 }
   /* written by salem */
 
-  .textcolor {
-    color: #00376b;
-  }
+.textcolor {
+	
+	color: #ffffff;
+}
 
 .backcolor {
 	
-	background-color: #00376b;
-	color: #fff;
+	background-color: #ffffff;
+	color: rgb(0, 0, 0);
 }
-
 
 
 @media only screen and (max-width: 1000px) {

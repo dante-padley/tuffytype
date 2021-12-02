@@ -98,11 +98,11 @@ $(document).ready(function () {
 		currentIndex = 0;
 		// going through a loop that gets each individual character in the string, creating a span for it, and then setting the text to that span to the individual character. This makes it so we can apply individual colors to each one of our letters as needed.
 		quote.split("").forEach((character) => {
-			// we can add an ASCII filter here
 			const characterSpan = document.createElement("span");
 			characterSpan.innerText = character;
 			quoteEl.append(characterSpan);
 		});
+
 		quoteChars.push.apply(quoteChars, quote.split(""));
 		//quoteEl.value = null;
 	}
@@ -142,7 +142,8 @@ $(document).ready(function () {
 
 	// This is the first function call. It produces the first quotes on the page.
 	renderFirstQuotes();
-
+  
+  const blinkElement = document.createElement('span');
 	// Input handling
 	$('body').bind('keypress', function (e) {
 		
@@ -161,22 +162,19 @@ $(document).ready(function () {
 		//updates counters on keypress
 		if (secondsRemaining > 0) TextCounter();
 
+
 		//starts timer
 		if (block == false) {Start_timer(); block = true; $(myobj).addClass("hidden");}
 
-		// if (/^[a-zA-Z0-9]+$/.test(charTyped) || /[~`!#$%\^&*+= \-\[\]\\'';,/{}|\\":<>\?]+$/.test(charTyped) || charTyped == '.' || charTyped == "'") {
 
-			// block = true;
+	
 			$("span").eq(currentIndex).addClass("blinking");
 			if (charTyped !== quoteChars[currentIndex]) {
-				//if (block !== true) {
-					$("span").eq(currentIndex).css("background-color", "#e32957");
-					$("span").eq(currentIndex).addClass("wrong");
-					errorCount++;				
-					currentIndex++;
-					characterCount++;
-					//block = true;
-				//}
+				$("span").eq(currentIndex).css("background-color", "#e32957");
+				$("span").eq(currentIndex).addClass("wrong");
+				errorCount++;				
+				currentIndex++;
+				characterCount++;
 			}
 			else {
 				$("span").eq(currentIndex).css("background-color", "#8cff78");
@@ -184,7 +182,6 @@ $(document).ready(function () {
 				wordCount = Math.floor(characterCount / 5);
 				currentIndex++;
 			}
-		// }
 		
 
 		if (currentIndex === topQuoteLength) {
@@ -200,12 +197,6 @@ $(document).ready(function () {
 		if (currentIndex > 0) {
 			charTyped = e.keyCode;
 			if (charTyped == 8) {
-				/// We want to track the wordcount better, probably by counting every 5 characters
-				/// Then figure out how to lower wordcount when backspacing
-				/*if ($("span").eq(currentIndex).textContent == '\u00A0'){
-					wordCount--;
-					wcEl.text("Words Typed: " + wordCount.toString());
-				}*/
 				currentIndex--;
 				characterCount--;
 				
@@ -213,6 +204,7 @@ $(document).ready(function () {
 				if ($("span").eq(currentIndex).hasClass("wrong") && errorCount != 0) {
 					errorCount--;					
 				}
+				$("span").eq(currentIndex).removeClass("blinking");
 				$("span").eq(currentIndex).css("background-color", "#00000000");
 			}
 		}
@@ -220,6 +212,7 @@ $(document).ready(function () {
 	//handles all textcounters
 	function TextCounter(){
 		ccEl.text("Characters Typed: " + characterCount.toString());
+
 		ccEl2.text("Characters Typed: " + characterCount.toString());
 		ecEl.text("Errors: " + errorCount.toString());
 		ecEl2.text("Errors: " + errorCount.toString());
@@ -229,10 +222,11 @@ $(document).ready(function () {
 		wcEl2.text("Words Typed: " + wordCount.toString());
 		RcEl2.text("WPM: " + Gross_wpm.toString());
 		AcEl2.text("Accuracy: " + AccuracyPercent.toString());
+
 		RawwordsperminEl.text("Raw WPM: " + Raw_wpm.toString());
 		aaE1.text("Accuracy: "+ AccuracyPercent.toString() + "%");
 		wordsperminEl.text("WPM: " + Gross_wpm.toString());
-    wordsperminEl2.text("WPM: " + Gross_wpm.toString());
+    	wordsperminEl2.text("WPM: " + Gross_wpm.toString());
 	}
 
 	//calculates all wpm's and word count
@@ -286,4 +280,18 @@ $(document).ready(function () {
     secondsRemaining = value;
     timerEl.text("Seconds Remaining: " + secondsRemaining);
   });*/
+
+
+	let cursorPos = sentence.length;
+	let direction = -1;
+	const switchDirection = () => direction *= -1;
+
+	// window.setInterval(() => {
+	// 	const atStart = cursorPos === 0;
+	// 	const atEnd = cursorPos === sentence.length;
+	// 	if (atStart && direction === -1 || atEnd && direction === 1) {switchDirection();}
+	// 	cursorPos += direction;
+	// 	/* Display only part of the text */
+	// 	sentenceElement.innerText = sentence.slice(0, cursorPos);
+	// }, 180);
 });
