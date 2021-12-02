@@ -149,16 +149,7 @@ $(document).ready(function () {
 		
 		
 		charTyped = String.fromCharCode(e.keyCode);
-		/*if(charTyped!==null)
-		{
-			
-		document.getElementById("Rawwordspermin").style.display = "block";
-		document.getElementById("word-count").style.display = "block";
-		document.getElementById("error-count").style.display = "block";
-		document.getElementById("character-count").style.display = "block";
-		document.getElementById("accuracy-percent").style.display = "block";
-		document.getElementById("wordspermin").style.display = "block";
-		}*/
+		
 		//updates counters on keypress
 		if (secondsRemaining > 0) TextCounter();
 
@@ -273,25 +264,12 @@ $(document).ready(function () {
     secondsRemaining = value;
     $("#timer").text("Seconds Remaining: " + secondsRemaining);
 
-  }/*
-  $("#timer1").onchange(function(){
-    var select = document.getElementById('timer1');
-    var value = select.options[select.selectedIndex].value;
-    secondsRemaining = value;
-    timerEl.text("Seconds Remaining: " + secondsRemaining);
-  });*/
+  }
 
 
 	let cursorPos = sentence.length;
 	let direction = -1;
 	const switchDirection = () => direction *= -1;
 
-	// window.setInterval(() => {
-	// 	const atStart = cursorPos === 0;
-	// 	const atEnd = cursorPos === sentence.length;
-	// 	if (atStart && direction === -1 || atEnd && direction === 1) {switchDirection();}
-	// 	cursorPos += direction;
-	// 	/* Display only part of the text */
-	// 	sentenceElement.innerText = sentence.slice(0, cursorPos);
-	// }, 180);
+	
 });
